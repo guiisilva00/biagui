@@ -13,7 +13,8 @@
   font-family: var(--font-note);
   font-size: 1.2rem;
   line-height: 1;
-  opacity: 0.6;
+  color: var(--ink-soft);
+  opacity: 1;
 }
 
 .lines {
@@ -39,6 +40,6 @@
   height: 0.85rem;
   margin-bottom: 0.3rem;
   border-radius: 1rem;
-  background: var(--pumpkin-spice);
-  opacity: 0.55;
+  background: var(--terracotta);
+  opacity: 0.64;
 }

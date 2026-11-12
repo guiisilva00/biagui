@@ -3,7 +3,7 @@
   z-index: 2;
   pointer-events: none;
   transform: rotate(var(--rot, 0deg)) scaleX(var(--flip, 1));
-  filter: drop-shadow(0 1px 1px rgba(10, 0, 25, 0.35)) drop-shadow(0 8px 10px rgba(10, 0, 25, 0.3));
+  filter: drop-shadow(0 1px 1px rgba(52, 43, 56, .16)) drop-shadow(0 8px 10px rgba(52, 43, 56, .18));
 }
 
 .flower svg {

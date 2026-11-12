@@ -4,7 +4,7 @@
   display: block;
   width: var(--w);
   aspect-ratio: 3 / 2;
-  margin-top: 18%;
+  margin-top: 8%;
   padding: 0;
   border: 0;
   background: none;
@@ -31,8 +31,8 @@
 .back {
   inset: 0;
   z-index: 0;
-  background: var(--indigo-ink);
-  box-shadow: 0 2px 2px rgba(10, 0, 25, 0.4), 0 24px 40px -8px rgba(10, 0, 25, 0.65);
+  background: #49364a;
+  box-shadow: 0 2px 2px rgba(12, 8, 12, .3), 0 24px 40px -8px rgba(12, 8, 12, .55);
 }
 
 /* carta */
@@ -68,15 +68,15 @@
 .pocketBottom {
   inset: 0;
   z-index: 3;
-  background-color: var(--royal-violet);
-  background-image: linear-gradient(115deg, rgba(255, 255, 255, 0.1), transparent 45%, rgba(36, 0, 70, 0.22));
+  background-color: var(--plum);
+  background-image: linear-gradient(115deg, rgba(255, 250, 240, .14), transparent 45%, rgba(34, 22, 35, .2));
 }
 .pocket {
   clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
 }
 .pocketBottom {
-  background-color: var(--indigo-velvet);
-  background-image: linear-gradient(0deg, rgba(36, 0, 70, 0.28), rgba(255, 255, 255, 0.05));
+  background-color: #68496a;
+  background-image: linear-gradient(0deg, rgba(34, 22, 35, .22), rgba(255, 250, 240, .08));
   clip-path: polygon(0 100%, 50% 46%, 100% 100%);
 }
 .pocket::after,
@@ -97,8 +97,8 @@
   width: 100%;
   height: 56%;
   z-index: 5;
-  background: var(--lavender-purple);
-  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(36, 0, 70, 0.18));
+  background: #876b83;
+  background-image: linear-gradient(180deg, rgba(255, 250, 240, .2), rgba(52, 43, 56, .16));
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   transform-origin: top center;
   transition: transform 0.9s cubic-bezier(0.5, 0, 0.2, 1), z-index 0s 0.45s;
@@ -106,6 +106,48 @@
 .envelope:not([data-state="closed"]) .flap {
   transform: rotateX(180deg);
   z-index: 1;
+}
+
+.salutation {
+  left: 0;
+  top: -34%;
+  z-index: 7;
+  width: 100%;
+  color: var(--paper-light);
+  font-family: var(--font-note);
+  font-size: clamp(3rem, 11vw, 5.25rem);
+  font-weight: 600;
+  line-height: .9;
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: 0 2px 3px rgba(34, 22, 35, .24);
+  transform: translateY(0) rotate(-2deg);
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.envelope:not([data-state="closed"]) .salutation {
+  opacity: 0;
+  transform: translateY(-4px) rotate(-2deg);
+}
+
+.sender {
+  right: 7%;
+  bottom: 9%;
+  z-index: 7;
+  padding: .3rem .65rem .35rem;
+  color: var(--plum);
+  background: var(--paper-light);
+  box-shadow: 0 2px 5px rgba(34, 22, 35, .2);
+  font-size: clamp(.72rem, 2.8vw, .95rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: .025em;
+  transform: rotate(2deg);
+  transition: opacity .3s ease;
+}
+
+.envelope:not([data-state="closed"]) .sender {
+  opacity: 0;
 }
 
 /* lacre */
@@ -141,7 +183,7 @@
   font-size: 1.4rem;
   line-height: 1;
   text-align: center;
-  color: var(--paper-lilac);
+  color: var(--paper);
   opacity: 0.75;
   animation: breathe 2.8s ease-in-out infinite;
   transition: opacity 0.4s ease;
@@ -166,7 +208,9 @@
 @media (prefers-reduced-motion: reduce) {
   .letter,
   .flap,
-  .seal {
+  .seal,
+  .salutation,
+  .sender {
     transition-duration: 0.01s;
     transition-delay: 0s;
   }

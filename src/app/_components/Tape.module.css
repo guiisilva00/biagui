@@ -10,11 +10,11 @@
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
 .tape[data-tone="lilac"] {
-  --c: rgba(190, 150, 235, 0.78);
+  --c: rgba(169, 130, 168, .68);
 }
 .tape[data-tone="orange"] {
-  --c: rgba(255, 145, 0, 0.8);
+  --c: rgba(184, 92, 69, .72);
 }
 .tape[data-tone="cream"] {
-  --c: rgba(246, 236, 223, 0.8);
+  --c: rgba(247, 239, 222, .82);
 }

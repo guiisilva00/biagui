@@ -2,8 +2,8 @@
 .shadow {
   position: relative;
   transform: rotate(var(--rot, 0deg));
-  filter: drop-shadow(0 1px 1px rgba(10, 0, 25, 0.35))
-    drop-shadow(0 10px 14px rgba(10, 0, 25, 0.28));
+  filter: drop-shadow(0 1px 1px rgba(52, 43, 56, .2))
+    drop-shadow(0 10px 14px rgba(52, 43, 56, .18));
 }
 
 .paper {
@@ -31,16 +31,16 @@
   --bg: var(--paper-lilac);
 }
 .paper[data-tone="orange"] {
-  --bg: var(--deep-saffron);
-  background-image: linear-gradient(160deg, var(--amber-glow), var(--princeton-orange));
+  --bg: #d6a07f;
+  background-image: linear-gradient(160deg, #dfb48e, #c98260);
 }
 .paper[data-tone="violet"] {
-  --bg: var(--indigo-velvet);
+  --bg: var(--plum);
   color: var(--paper-cream);
-  background-image: linear-gradient(160deg, var(--royal-violet), var(--indigo-velvet) 60%);
+  background-image: linear-gradient(160deg, var(--purple), var(--plum) 60%);
 }
 .paper[data-tone="ink"] {
-  --bg: var(--indigo-ink);
+  --bg: var(--plum);
   color: var(--paper-cream);
 }
 
