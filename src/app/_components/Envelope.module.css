@@ -1,5 +1,5 @@
 .envelope {
-  --w: min(86vw, 30rem);
+  --w: max(15rem, min(86vw, 30rem, calc((100svh - 24rem) * 1.5)));
   position: relative;
   display: block;
   width: var(--w);
@@ -119,12 +119,12 @@
 
 .salutation {
   left: 0;
-  top: -34%;
+  top: -32%;
   z-index: 7;
   width: 100%;
   color: var(--paper-light);
   font-family: var(--font-note);
-  font-size: clamp(3rem, 11vw, 5.25rem);
+  font-size: calc(var(--w) * .17);
   font-weight: 600;
   line-height: .9;
   text-align: center;
@@ -226,5 +226,11 @@
   }
   .hint {
     animation: none;
+  }
+}
+
+@media (max-height: 520px) {
+  .envelope {
+    --w: max(12rem, min(60vw, 30rem, calc((100svh - 14rem) * 1.5)));
   }
 }
