@@ -1,0 +1,14 @@
+.memory {
+  position: relative;
+  z-index: var(--z);
+  grid-column: var(--c);
+  grid-row: var(--r);
+  transform: var(--shift);
+}
+
+@media (min-width: 900px) {
+  .memory {
+    grid-column: var(--cd);
+    grid-row: var(--rd);
+  }
+}

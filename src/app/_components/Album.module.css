@@ -1,0 +1,61 @@
+.album {
+  position: relative;
+  /* fundo contínuo: roxo profundo com pequenos respiros de luz */
+  background:
+    radial-gradient(70% 28% at 12% 8%, rgba(123, 44, 191, 0.38), transparent 70%),
+    radial-gradient(60% 24% at 92% 38%, rgba(157, 78, 221, 0.26), transparent 70%),
+    radial-gradient(60% 26% at 8% 66%, rgba(255, 121, 0, 0.1), transparent 70%),
+    radial-gradient(70% 26% at 88% 90%, rgba(123, 44, 191, 0.34), transparent 70%),
+    linear-gradient(180deg, var(--dark-amethyst), var(--indigo-ink) 38%, var(--dark-amethyst) 62%, var(--indigo-ink));
+}
+
+.album::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  opacity: 0.3;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.album > section {
+  z-index: 1;
+}
+
+.strip {
+  position: absolute;
+  z-index: 0;
+  transform: rotate(var(--r));
+  opacity: 0.9;
+}
+
+/* wrapper para ancorar flores, fitas e lacres na peça */
+.stage {
+  position: relative;
+}
+
+.phrase {
+  text-align: center;
+}
+
+.underline {
+  display: block;
+  margin: 1.4rem auto 0;
+}
+
+.seal {
+  position: absolute;
+  left: calc(50% - 1.6rem);
+  bottom: -1.5rem;
+  z-index: 3;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, var(--amber-glow), var(--pumpkin-spice));
+  box-shadow: 0 2px 2px rgba(10, 0, 25, 0.4), 0 8px 14px -2px rgba(10, 0, 25, 0.45), inset 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.end {
+  height: 5rem;
+}

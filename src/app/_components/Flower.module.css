@@ -1,0 +1,34 @@
+.flower {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  transform: rotate(var(--rot, 0deg)) scaleX(var(--flip, 1));
+  filter: drop-shadow(0 1px 1px rgba(10, 0, 25, 0.35)) drop-shadow(0 8px 10px rgba(10, 0, 25, 0.3));
+}
+
+.flower svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.sway svg {
+  transform-origin: 50% 100%;
+  animation: sway 9s ease-in-out infinite alternate;
+}
+
+@keyframes sway {
+  from {
+    transform: rotate(-1.6deg);
+  }
+  to {
+    transform: rotate(1.6deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sway svg {
+    animation: none;
+  }
+}

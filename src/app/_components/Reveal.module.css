@@ -1,0 +1,24 @@
+.reveal {
+  transition: opacity 0.9s ease var(--delay, 0ms),
+    transform 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) var(--delay, 0ms);
+}
+
+.reveal[data-seen="false"] {
+  opacity: 0;
+  transform: translateY(26px);
+}
+.reveal[data-seen="false"][data-from="left"] {
+  transform: translateX(-26px);
+}
+.reveal[data-seen="false"][data-from="right"] {
+  transform: translateX(26px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal[data-seen="false"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

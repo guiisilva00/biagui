@@ -1,0 +1,36 @@
+.polaroid {
+  position: relative;
+  padding: 0.65rem 0.65rem 0;
+  background: #fbf4ea;
+  transform: rotate(var(--rot, 0deg));
+  box-shadow: 0 1px 1px rgba(10, 0, 25, 0.3), 0 12px 22px -4px rgba(10, 0, 25, 0.5);
+}
+
+.polaroid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  opacity: 0.14;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  min-height: 2.9rem;
+  padding: 0 0.3rem;
+  font-family: var(--font-note);
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--indigo-ink);
+}
+
+.line {
+  display: block;
+  width: 55%;
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(60, 9, 108, 0.2);
+}

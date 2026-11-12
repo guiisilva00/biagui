@@ -1,49 +1,73 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* laranjas — contraste e calor */
+  --pumpkin-spice: #ff6d00;
+  --harvest-orange: #ff7900;
+  --princeton-orange: #ff8500;
+  --deep-saffron: #ff9100;
+  --amber-glow: #ff9e00;
+
+  /* roxos — base profunda */
+  --dark-amethyst: #240046;
+  --indigo-ink: #3c096c;
+  --indigo-velvet: #5a189a;
+  --royal-violet: #7b2cbf;
+  --lavender-purple: #9d4edd;
+
+  /* papéis (neutros quentes, tingidos de roxo) */
+  --paper-cream: #f6ecdf;
+  --paper-lilac: #e6d6f2;
+  --paper-ink: #2a1340;
+
+  --font-display: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  --font-note: var(--font-hand), "Caveat", cursive;
+
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-  height: 100%;
+  background: var(--dark-amethyst);
+  scroll-behavior: smooth;
 }
 
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100svh;
+  color: var(--paper-cream);
+  background: var(--dark-amethyst);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+img {
+  display: block;
+  max-width: 100%;
 }
 
-a {
+button {
+  font: inherit;
   color: inherit;
-  text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
+:focus-visible {
+  outline: 2px solid var(--amber-glow);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
   html {
-    color-scheme: dark;
+    scroll-behavior: auto;
   }
 }

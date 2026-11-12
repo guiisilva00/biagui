@@ -1,0 +1,38 @@
+.photo {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--indigo-ink);
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.03);
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.5rem;
+  color: rgba(230, 214, 242, 0.62);
+  background:
+    radial-gradient(120% 90% at 30% 15%, rgba(157, 78, 221, 0.55), transparent 60%),
+    radial-gradient(90% 80% at 85% 95%, rgba(255, 121, 0, 0.28), transparent 65%),
+    linear-gradient(150deg, var(--indigo-velvet), var(--dark-amethyst));
+}
+
+.placeholder svg {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.placeholder span {
+  font-family: var(--font-note);
+  font-size: 1.15rem;
+  line-height: 1;
+}

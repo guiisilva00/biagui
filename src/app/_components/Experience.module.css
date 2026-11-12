@@ -1,0 +1,30 @@
+.main {
+  position: relative;
+  overflow-x: clip;
+}
+
+.cover {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100svh;
+  padding: 2rem 0 6rem;
+  overflow: hidden;
+  /* superfície de papel sob o envelope */
+  background:
+    radial-gradient(90% 60% at 50% 38%, rgba(157, 78, 221, 0.28), transparent 70%),
+    linear-gradient(180deg, var(--indigo-ink), var(--dark-amethyst));
+}
+
+.table {
+  position: absolute;
+  inset: 0;
+  background-image: var(--grain);
+  opacity: 0.35;
+  mix-blend-mode: soft-light;
+}
+
+.albumWrap {
+  position: relative;
+  scroll-margin-top: 0;
+}
