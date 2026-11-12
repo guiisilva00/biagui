@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { useLenis } from "lenis/react";
 import Envelope from "./Envelope";
 import Album from "./Album";
+import MusicPlayer from "./MusicPlayer";
+import { TRACK } from "./trackData";
 import styles from "./Experience.module.css";
 
 /*
@@ -29,13 +31,31 @@ export default function Experience() {
   const coverRef = useRef(null);
   const albumRef = useRef(null);
   const barRef = useRef(null);
+  const audioRef = useRef(null);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setLoading(false), 2500);
     return () => window.clearTimeout(timer);
   }, []);
 
+  /* música: começa no toque que abre o envelope (gesto do usuário libera o áudio) */
+  function startMusic() {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = 0;
+    audio.play().then(() => {
+      const t0 = performance.now();
+      const ramp = (now) => {
+        const k = Math.min(1, (now - t0) / 2500);
+        audio.volume = 0.8 * k;
+        if (k < 1) requestAnimationFrame(ramp);
+      };
+      requestAnimationFrame(ramp);
+    }).catch(() => {});
+  }
+
   function open() {
+    startMusic();
     setState("opening");
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     window.setTimeout(() => setState("open"), reduce ? 50 : 1700);
@@ -94,6 +114,8 @@ export default function Experience() {
 
   return (
     <main className={styles.main}>
+      <audio ref={audioRef} src={TRACK.src} preload="none" />
+      <MusicPlayer audioRef={audioRef} visible={state !== "closed"} />
       {state === "open" && (
         <div className={styles.progress} aria-hidden="true">
           <span ref={barRef} />
