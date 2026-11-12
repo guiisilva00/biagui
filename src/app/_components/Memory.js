@@ -6,7 +6,8 @@ import styles from "./Memory.module.css";
   Cada Memory define sua posição no mobile e no desktop:
     col / colD : grid-column (mobile / desktop)  ex.: "1 / span 8"
     row / rowD : grid-row opcional
-    shift      : deslocamento manual no mobile (ex.: "0.5rem, 1rem")
+    shift      : deslocamento manual (ex.: "0.5rem, 1rem")
+    shiftD     : deslocamento alternativo no desktop
   Dentro dele entra qualquer composição: Polaroid, Note, Paper, Flower...
 */
 export default function Memory({
@@ -14,6 +15,7 @@ export default function Memory({
   colD,
   row,
   rowD,
+  shiftD,
   z = 1,
   from = "up",
   delay = 0,
@@ -32,6 +34,7 @@ export default function Memory({
         "--rd": rowD ?? row ?? "auto",
         "--z": z,
         "--shift": shift ? `translate(${shift})` : "none",
+        "--shiftd": shiftD ? `translate(${shiftD})` : shift ? `translate(${shift})` : "none",
         alignSelf: align,
       }}
     >

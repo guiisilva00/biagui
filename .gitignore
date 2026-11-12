@@ -24,6 +24,12 @@
 .DS_Store
 *.pem
 
+# local agent instructions and workspace tooling
+/AGENTS.md
+/.agents/
+/.codex/
+/.impeccable/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

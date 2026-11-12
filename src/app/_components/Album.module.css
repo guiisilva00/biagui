@@ -58,6 +58,17 @@
 
 .letter p + p { margin-top: 1em; }
 
+.letter .signature {
+  margin-top: 1.5em;
+  color: var(--plum);
+  font-family: var(--font-note);
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.05;
+  text-align: center;
+  transform: rotate(-2deg);
+}
+
 .seal {
   position: absolute;
   left: calc(50% - 1.6rem);
@@ -68,6 +79,10 @@
   border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #c98260, var(--rust));
   box-shadow: 0 2px 3px rgba(52, 43, 56, .22), 0 8px 14px -4px rgba(52, 43, 56, .25), inset 0 0 0 3px rgba(255, 250, 240, .24);
+}
+
+@media (max-width: 899px) {
+  .seal { bottom: -3rem; }
 }
 
 .end { height: 9rem; }

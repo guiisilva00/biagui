@@ -10,5 +10,6 @@
   .memory {
     grid-column: var(--cd);
     grid-row: var(--rd);
+    transform: var(--shiftd);
   }
 }

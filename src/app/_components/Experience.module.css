@@ -31,6 +31,65 @@
   mix-blend-mode: soft-light;
 }
 
+.loader {
+  display: grid;
+  place-items: center;
+  gap: .55rem;
+  min-height: 7rem;
+}
+
+.loadingLabel {
+  color: var(--paper);
+  font-family: var(--font-note);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.spinner {
+  --size: 3.5rem;
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+}
+
+.dot {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: start center;
+}
+
+.dot::before {
+  content: "";
+  width: 22%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--terracotta);
+  box-shadow: 0 1px 5px rgba(216, 161, 107, .35);
+  animation: orbit-pulse 1s ease-in-out infinite;
+}
+
+.dot:nth-child(2) { transform: rotate(45deg); }
+.dot:nth-child(3) { transform: rotate(90deg); }
+.dot:nth-child(4) { transform: rotate(135deg); }
+.dot:nth-child(5) { transform: rotate(180deg); }
+.dot:nth-child(6) { transform: rotate(225deg); }
+.dot:nth-child(7) { transform: rotate(270deg); }
+.dot:nth-child(8) { transform: rotate(315deg); }
+.dot:nth-child(even)::before { background: var(--lavender); }
+.dot:nth-child(2)::before { animation-delay: -.875s; }
+.dot:nth-child(3)::before { animation-delay: -.75s; }
+.dot:nth-child(4)::before { animation-delay: -.625s; }
+.dot:nth-child(5)::before { animation-delay: -.5s; }
+.dot:nth-child(6)::before { animation-delay: -.375s; }
+.dot:nth-child(7)::before { animation-delay: -.25s; }
+.dot:nth-child(8)::before { animation-delay: -.125s; }
+
+@keyframes orbit-pulse {
+  0%, 100% { opacity: .45; }
+  50% { opacity: 1; }
+}
+
 .albumWrap {
   position: relative;
   width: min(100% - 1.25rem, 80rem);
@@ -53,4 +112,8 @@
 
 @media (min-width: 900px) {
   .albumWrap { width: min(100% - 4rem, 80rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot::before { animation: none; opacity: .65; }
 }

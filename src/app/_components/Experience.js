@@ -11,8 +11,14 @@ import styles from "./Experience.module.css";
   não existe scroll: a primeira tela é só o envelope.
 */
 export default function Experience() {
+  const [loading, setLoading] = useState(true);
   const [state, setState] = useState("closed"); // closed | opening | open
   const albumRef = useRef(null);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setLoading(false), 2500);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   function open() {
     setState("opening");
@@ -30,9 +36,18 @@ export default function Experience() {
 
   return (
     <main className={styles.main}>
-      <header className={styles.cover} data-state={state}>
+      <header className={styles.cover} data-state={loading ? "loading" : state}>
         <div className={styles.table} aria-hidden="true" />
-        <Envelope state={state} onOpen={open} />
+        {loading ? (
+          <div className={styles.loader} role="status" aria-label="Preparando o álbum">
+            <span className={styles.spinner} aria-hidden="true">
+              {Array.from({ length: 8 }, (_, i) => <span className={styles.dot} key={i} />)}
+            </span>
+            <span className={styles.loadingLabel} aria-hidden="true">carregando</span>
+          </div>
+        ) : (
+          <Envelope state={state} onOpen={open} />
+        )}
       </header>
       {state === "open" && (
         <div ref={albumRef} className={styles.albumWrap}>

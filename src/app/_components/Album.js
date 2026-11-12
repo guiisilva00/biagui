@@ -6,20 +6,31 @@ import Paper from "./Paper";
 import Flower from "./Flower";
 import Doodle from "./Doodle";
 import Tape from "./Tape";
+import ElapsedTime from "./ElapsedTime";
 import Stamp from "./Stamp";
 import styles from "./Album.module.css";
 
+// Em cada foto, edite src (arquivo), alt (descrição acessível) e caption (legenda).
+// A lista segue exatamente a ordem em que as fotos aparecem na página.
 const photos = [
-  "/img/WhatsApp Image 2026-11-11 at 19.44.42.jpeg",
-  "/img/WhatsApp Image 2026-11-11 at 19.52.37.jpeg",
-  "/img/WhatsApp Image 2026-11-11 at 19.59.17.jpeg",
-  "/img/WhatsApp Image 2026-11-11 at 20.16.21.jpeg",
-  "/img/WhatsApp Image 2026-11-11 at 20.16.22.jpeg",
-  "/img/WhatsApp Image 2026-11-11 at 20.18.36.jpeg",
-  "/img/WhatsApp Image 2026-11-11 at 20.19.03.jpeg",
-  "/img/WhatsApp Image 2026-11-11 at 20.21.45.jpeg",
-  "/img/WhatsApp Image 2026-11-11 at 20.22.22.jpeg",
-  "/img/WhatsApp Image 2026-11-11 at 20.23.31.jpeg",
+  // 1. Primeira composição — edite src, alt e caption desta foto.
+  { src: "/img/WhatsApp Image 2026-11-11 at 19.44.42.jpeg", alt: "Foto do casal", caption: "Nosso primeiro dia juntos." },
+  // 2. Primeira foto da sequência.
+  { src: "/img/WhatsApp Image 2026-11-11 at 19.52.37.jpeg", alt: "Foto do casal", caption: "Terceiro dia juntos e primeiro beijo." },
+  // 3. Segunda foto da sequência.
+  { src: "/img/WhatsApp Image 2026-11-11 at 19.59.17.jpeg", alt: "Foto do casal", caption: "Meu aniversário" },
+  // 4. Última foto da sequência.
+  { src: "/img/WhatsApp Image 2026-11-11 at 20.16.21.jpeg", alt: "Foto do casal", caption: "Casais legais mantém o cinema vivo!" },
+  // 5. Seção Foto grande.
+  { src: "/img/iluminada.jpeg", alt: "Foto do casal", caption: "O cabelo mais lindo do MUNDO!" },
+  // 6. Seção Lembrança.
+  { src: "/img/WhatsApp Image 2026-11-11 at 20.18.36.jpeg", alt: "Foto do casal", caption: "O méqui sempre vai ser nosso" },
+  // 7. Primeira foto de Mais fotos.
+  { src: "/img/WhatsApp Image 2026-11-11 at 20.19.03.jpeg", alt: "Foto do casal", caption: "Nessa foto falavam que a gente era igual" },
+  // 8. Segunda foto de Mais fotos.
+  { src: "/img/WhatsApp Image 2026-11-11 at 20.21.45.jpeg", alt: "Foto do casal", caption: "12/06/2026" },
+  // 9. Terceira foto de Mais fotos.
+  { src: "/img/WhatsApp Image 2026-11-11 at 20.22.22.jpeg", alt: "Foto do casal", caption: "Penso em você toda noite, quero você todo dia" },
 ];
 
 /*
@@ -47,7 +58,7 @@ export default function Album() {
         <Memory col="2 / span 10" colD="2 / span 5" row="1" rowD="1 / span 2" from="left">
           <div className={styles.stage}>
             <Flower variant="bloom" size="7.5rem" rotate={-14} style={{ left: "-2.2rem", bottom: "-3.2rem", zIndex: 2 }} />
-            <Polaroid src={photos[0]} alt="Memória do casal" rotate={-3} tape tapeTone="orange" ratio="4 / 5" style={{ zIndex: 3 }} />
+            <Polaroid {...photos[0]} rotate={-3} tape tapeTone="orange" ratio="16 / 9" style={{ zIndex: 3 }} />
           </div>
         </Memory>
         <Memory col="2 / span 11" colD="7 / span 4" row="2" rowD="2" shift="0, -2.4rem" delay={150} from="right">
@@ -61,16 +72,22 @@ export default function Album() {
         </Memory>
       </Section>
 
+      <Section label="Tempo desde o primeiro encontro">
+        <Memory col="2 / span 10" colD="2 / span 10" from="up">
+          <ElapsedTime />
+        </Memory>
+      </Section>
+
       {/* 2 — sequência de fotos */}
       <Section label="Fotos" gap="0.5rem">
         <Memory col="1 / span 7" colD="2 / span 3" row="1" rowD="1" align="start" from="left">
-          <Polaroid src={photos[1]} alt="Memória do casal" rotate={4} tape tapeTone="lilac" />
+          <Polaroid {...photos[1]} rotate={4} tape tapeTone="lilac" />
         </Memory>
         <Memory col="6 / span 7" colD="5 / span 4" row="2" rowD="1" shift="0, -2.6rem" align="center" delay={120}>
-          <Polaroid src={photos[2]} alt="Memória do casal" rotate={-3} ratio="4 / 5" />
+          <Polaroid {...photos[2]} rotate={-3} ratio="4 / 5" />
         </Memory>
-        <Memory col="2 / span 7" colD="9 / span 3" row="3" rowD="1" shift="0, -4.6rem" align="end" delay={240} from="right">
-          <Polaroid src={photos[3]} alt="Memória do casal" rotate={2} tape tapeTone="orange" />
+        <Memory col="2 / span 7" colD="9 / span 3" row="3" rowD="1" shift="0, -2.2rem" shiftD="0, -4.6rem" align="end" delay={240} from="right">
+          <Polaroid {...photos[3]} rotate={2} tape tapeTone="orange" />
         </Memory>
       </Section>
 
@@ -96,14 +113,14 @@ export default function Album() {
         <Memory col="1 / -1" colD="1 / span 7" row="1" from="left">
           <div className={styles.stage}>
             <Flower variant="bloom" size="6rem" rotate={-22} style={{ left: "-1.6rem", top: "-3.6rem", zIndex: 1 }} />
-            <Polaroid src={photos[4]} alt="Memória do casal" rotate={1.5} tape tapeTone="orange" ratio="4 / 5" style={{ zIndex: 2 }} />
+            <Polaroid {...photos[4]} rotate={1.5} tape tapeTone="orange" ratio="4 / 5" style={{ zIndex: 2 }} />
           </div>
         </Memory>
         <Memory col="2 / span 11" colD="8 / span 4" row="2" rowD="1" shift="0, -3rem" align="center" delay={160} from="right">
           <Note tone="orange" edge={4} rotate={-2.5}>
             <div className={styles.letter}>
               <p>Você é iluminada, meu amor, iluminada de corpo e alma. Tudo o que vem de você me deixa admirado e impressionado. Eu amo de verdade o jeito que você trata as coisas, o jeito que lida com as pessoas, o jeito que lida comigo. É coisa de outro mundo, meu bem, e eu quero te ter pro resto da minha vida. Você coloriu minha vida de roxo e laranja, e a cada dia me traz mais um motivo pra acordar. Independente do cansaço ou da preguiça, eu acordo com um sorriso no rosto por saber que vou ter a minha companheira ali comigo, sempre pronta pra me apoiar.</p>
-              <p>Meu bem, é surreal a conexão que temos. Todos os nossos momentos, todos os nossos sexos, nossos momentos de conselho um pro outro, momentos em que choramos, rimos, dançamos e até mesmo “””””brigando”””””, eu sinto que estou conectado com você.</p>
+              <p>Meu bem, é surreal a conexão que temos. Todos os nossos momentos, todas as nossas noites, nossos momentos de conselho um pro outro, momentos em que choramos, rimos, dançamos e até mesmo “””””brigando”””””, eu sinto que estou conectado com você.</p>
               <p>Somos diferentes, meu amor, e isso não é novidade pra você. Sei que parece chover no molhado eu aqui te contando tudo o que você já ouve de mim todos os dias, mas é aquilo, né? Nunca é demais demonstrar meu amor por você. Não me canso nunca de escrever pra você, seja à mão ou pelo teclado. Isso não muda nada do que eu sinto por ti, minha gata.</p>
             </div>
           </Note>
@@ -140,7 +157,7 @@ export default function Album() {
         </Memory>
         <Memory col="6 / span 7" colD="7 / span 4" row="1" shift="0, 5.2rem" delay={160} from="right">
           <div className={styles.stage}>
-            <Polaroid src={photos[5]} alt="Memória do casal" rotate={5} tape tapeTone="lilac" />
+            <Polaroid {...photos[5]} rotate={5} tape tapeTone="lilac" />
             <Flower variant="bud" size="4.2rem" rotate={-8} flip style={{ right: "-1rem", bottom: "-2.6rem", zIndex: 1 }} />
           </div>
         </Memory>
@@ -152,13 +169,13 @@ export default function Album() {
       {/* 7 — novas fotos */}
       <Section label="Mais fotos" gap="0.5rem">
         <Memory col="1 / span 6" colD="2 / span 3" row="1" rowD="1" align="start" from="left">
-          <Polaroid src={photos[6]} alt="Memória do casal" rotate={-2.5} tape tapeTone="orange" />
+          <Polaroid {...photos[6]} rotate={-2.5} tape tapeTone="orange" />
         </Memory>
         <Memory col="7 / span 6" colD="6 / span 4" row="1" rowD="1" shift="0, 2.6rem" align="end" delay={120} from="right">
-          <Polaroid src={photos[7]} alt="Memória do casal" rotate={3} ratio="4 / 5" />
+          <Polaroid {...photos[7]} rotate={3} ratio="4 / 5" />
         </Memory>
         <Memory col="3 / span 8" colD="10 / span 3" row="2" rowD="1" shift="0, 1.2rem" align="center" delay={200}>
-          <Polaroid src={photos[8]} alt="Memória do casal" rotate={-1.2} ratio="4 / 3" tape tapeTone="lilac" />
+          <Polaroid {...photos[8]} rotate={-1.2} ratio="4 / 3" tape tapeTone="lilac" />
         </Memory>
       </Section>
 
@@ -173,7 +190,8 @@ export default function Album() {
             <Note tone="cream" edge={2} rotate={0.8}>
               <div className={styles.letter}>
                 <p>De todas as pessoas, de todos os momentos, de todos os sentimentos, de todas as emoções, é você, Beatriz de Moraes Bertoldo, que eu escolho. É você que eu escolho pra minha vida, é ao seu lado que eu quero acordar todos os dias, e é em você que eu quero depositar toda a minha confiança e o meu amor. Porque você é a mulher que, independente de tudo o que passou, quis apostar todas as suas fichas em mim. Sério, de onde tu tirou que ir fazer um simulado com um estranho seria uma ótima ideia? KKKKKKKKKKKKKKKKKKKK Isso me impressiona demais e me mostra quem tu é de verdade, meu amor!</p>
-                <p>Espero que você tenha gostado de tudo o que eu já fiz por você até hoje. Sei que ainda não tenho condições de te proporcionar momentos tão grandes quanto vou poder no futuro, mas valorizo muito a tua humildade de sempre estar comigo e me apoiar pra vencermos juntos nessa vida complicada. E é por isso que eu te amo, meu amor. Eu te amo com toda a minha alma &lt;3</p>
+                <p>Espero que você tenha gostado de tudo o que eu já fiz por você até hoje. Sei que ainda não tenho condições de te proporcionar momentos tão grandes quanto vou poder no futuro, mas valorizo muito a tua humildade de sempre estar comigo e me apoiar pra vencermos juntos nessa vida complicada. E é por isso que eu te amo, meu amor. Eu te amo intensamente.</p>
+                <p className={styles.signature}>com todo amor e carinho<br />~ gui</p>
               </div>
             </Note>
             <span className={styles.seal} aria-hidden="true" />
