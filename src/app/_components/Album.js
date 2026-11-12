@@ -57,7 +57,7 @@ export default function Album() {
       </div>
 
       {/* 1 — primeira composição */}
-      <Section label="Primeira composição">
+      <Section label="Primeira composição" className={styles.pinboard}>
         <Memory col="2 / span 10" colD="2 / span 5" row="1" rowD="1 / span 2" from="left">
           <div className={styles.stage}>
             <Flower variant="bloom" size="7.5rem" rotate={-14} style={{ left: "-2.2rem", bottom: "-3.2rem", zIndex: 2 }} />
@@ -95,7 +95,7 @@ export default function Album() {
       </Section>
 
       {/* 3 — uma mensagem maior */}
-      <Section label="Mensagem">
+      <Section label="Mensagem" className={styles.pinboard}>
         <Memory col="1 / -1" colD="3 / span 7">
           <div className={styles.stage}>
             <Flower variant="bud" size="5rem" rotate={12} style={{ right: "-0.6rem", top: "-4.4rem", zIndex: 1 }} />
@@ -112,7 +112,7 @@ export default function Album() {
       </Section>
 
       {/* 4 — uma foto grande */}
-      <Section label="Foto grande">
+      <Section label="Foto grande" className={styles.pinboard}>
         <Memory col="1 / -1" colD="1 / span 7" row="1" from="left">
           <div className={styles.stage}>
             <Flower variant="bloom" size="6rem" rotate={-22} style={{ left: "-1.6rem", top: "-3.6rem", zIndex: 1 }} />
@@ -131,7 +131,7 @@ export default function Album() {
       </Section>
 
       {/* 5 — uma frase */}
-      <Section label="Frase">
+      <Section label="Frase" className={styles.pinboard}>
         <Memory col="1 / -1" colD="2 / span 10">
           <div className={styles.stage}>
             <Doodle shape="stars" width="2.6rem" style={{ position: "absolute", top: "-1.6rem", right: "1.4rem", zIndex: 2 }} />
@@ -148,7 +148,7 @@ export default function Album() {
       </Section>
 
       {/* 6 — uma lembrança */}
-      <Section label="Lembrança">
+      <Section label="Lembrança" className={styles.pinboard}>
         <Memory col="1 / span 11" colD="2 / span 4" row="1" align="start" from="left">
           <Note tone="cream" edge={4} rotate={-2}>
             <div className={styles.letter}>
@@ -183,7 +183,7 @@ export default function Album() {
       </Section>
 
       {/* músicas dedicadas — texto normal + letras gordinhas */}
-      <Section label="Músicas" gap="1.5rem">
+      <Section label="Músicas" gap="1.5rem" className={styles.pinboard}>
         <Memory col="1 / -1" colD="2 / span 7" row="1" rowD="1">
           <Note tone="cream" edge={3} rotate={-1}>
             <div className={styles.letter}>
@@ -196,13 +196,13 @@ export default function Album() {
         <Memory col="2 / span 8" colD="2 / span 4" row="2" rowD="2 / span 2" shift="0, 1rem" from="left" delay={100}>
           <div className={styles.stage}>
             <Flower variant="bud" size="4.2rem" rotate={-14} style={{ left: "-1.2rem", bottom: "-2.6rem", zIndex: 1 }} />
-            <Polaroid src={image("adore-you.jpg")} alt="Foto do artista da música Adore You" caption="Harry Styles" ratio="3 / 4" rotate={-3} tape tapeTone="orange" style={{ zIndex: 2 }} />
+            <Polaroid src={image("hungria.jpg")} alt="Foto do Hungria" caption="Hungria" ratio="3 / 4" rotate={-3} tape tapeTone="orange" style={{ zIndex: 2 }} />
           </div>
         </Memory>
         <Memory col="1 / -1" colD="6 / span 6" row="3" rowD="2" shift="0, 1.2rem" shiftD="0, 0">
           <Note tone="cream" edge={1} rotate={1}>
             <div className={`${styles.letter} ${styles.short}`}>
-              <p>A primeira música é do Harry Styles, “Adore You”, e eu achei muito lindas as partes:</p>
+              <p>A música “Amor e Fé”, do Hungria, tem essas partes que eu achei muito lindas:</p>
             </div>
           </Note>
         </Memory>
@@ -211,8 +211,8 @@ export default function Album() {
             tone="violet"
             edge={2}
             rotate={-0.8}
-            lines={["I get so lost inside your eyes", "Would you believe it?"]}
-            credit={<a href="https://open.spotify.com/track/3jjujdWJ72nww5eGnfs2E7" target="_blank" rel="noopener noreferrer">Adore You · Harry Styles</a>}
+            lines={["Tá pra nascer um maloqueiro disposto a soltar o dedo só por causa dela", "Aí eu penso o tempo inteiro e até bate o desespero, o que sou eu sem ela?"]}
+            credit={<a href="https://open.spotify.com/intl-pt/track/5ra6CI0pEzqjxPEZeBz0d7?si=99856a4317db49c0" target="_blank" rel="noopener noreferrer">Amor e Fé · Hungria</a>}
           />
         </Memory>
 
@@ -249,7 +249,7 @@ export default function Album() {
       </Section>
 
       {/* 8 — mensagem final */}
-      <Section label="Mensagem final">
+      <Section label="Mensagem final" className={styles.pinboard}>
         <Memory col="1 / -1" colD="3 / span 8">
           <div className={styles.stage}>
             <Flower variant="bloom" size="7rem" rotate={10} flip style={{ right: "-1rem", bottom: "-8.2rem", zIndex: 3 }} />
