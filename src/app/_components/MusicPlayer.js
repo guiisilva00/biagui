@@ -136,7 +136,7 @@ export default function MusicPlayer({ audioRef, visible }) {
 
   return (
     <>
-      <div className={styles.dock} data-visible={visible} aria-hidden={!visible}>
+      <div className={styles.dock} data-visible={visible} aria-hidden={!visible} style={{ "--cover": `url("${TRACK.cover}")` }}>
         <button
           type="button"
           className={styles.disc}
@@ -170,7 +170,9 @@ export default function MusicPlayer({ audioRef, visible }) {
       {open && (
         <div className={styles.sheet} role="dialog" aria-modal="true" aria-label={`Letra de ${TRACK.title}`}>
           <header className={styles.head}>
-            <div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className={styles.cover} src={TRACK.cover} alt="Capa do álbum Red Hot + Rio" width="400" height="400" />
+            <div className={styles.headText}>
               <p className={styles.title}>{TRACK.title}</p>
               <p className={styles.artist}>{TRACK.artist}</p>
             </div>

@@ -46,7 +46,7 @@ export default function Experience() {
     audio.play().then(() => {
       const t0 = performance.now();
       const ramp = (now) => {
-        const k = Math.min(1, (now - t0) / 2500);
+        const k = Math.min(1, Math.max(0, (now - t0) / 2500));
         audio.volume = 0.8 * k;
         if (k < 1) requestAnimationFrame(ramp);
       };
