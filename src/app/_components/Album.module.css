@@ -37,6 +37,28 @@
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 900' preserveAspectRatio='none'%3E%3Cpath d='M110 80 C340 145 520 80 690 220 S500 390 250 340 S110 510 350 570 S570 480 720 700 S440 830 160 760' fill='none' stroke='%238b5146' stroke-width='2' stroke-dasharray='1 0'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
 }
 
+.photoMural { isolation: isolate; }
+.muralThread {
+  position: absolute;
+  inset: 0 1.25rem;
+  z-index: 0;
+  width: calc(100% - 2.5rem);
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.muralThread path {
+  fill: none;
+  stroke: #9b6656;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1 0;
+  filter: drop-shadow(0 1px 1px rgba(70, 45, 37, .2));
+}
+.pinShadow { fill: rgba(65, 42, 38, .22); }
+.pinHead { fill: #b34f3f; stroke: #f6e3ca; stroke-width: 1.5; }
+.pinHighlight { fill: #ffd7a2; }
+
 .strip {
   position: absolute;
   z-index: 0;
@@ -45,6 +67,7 @@
 }
 
 .stage { position: relative; }
+.memoryLetter { width: 100%; }
 .phrase { text-align: center; }
 .underline { display: block; margin: 1.4rem auto 0; }
 
@@ -93,6 +116,7 @@
 
 @media (max-width: 899px) {
   .seal { bottom: -3rem; }
+  .memoryLetter { transform: rotate(0deg); }
 }
 
 .end { height: 9rem; }

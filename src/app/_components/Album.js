@@ -64,7 +64,7 @@ export default function Album() {
             <Polaroid {...photos[0]} rotate={-3} tape tapeTone="orange" ratio="16 / 9" style={{ zIndex: 3 }} />
           </div>
         </Memory>
-        <Memory col="2 / span 11" colD="7 / span 4" row="2" rowD="2" shift="0, -2.4rem" delay={150} from="right">
+        <Memory col="2 / span 11" colD="7 / span 4" row="2" rowD="2" shift="0, 0" shiftD="0, -2.4rem" delay={150} from="right">
           <Note tone="cream" edge={2} rotate={2.5}>
             <div className={styles.letter}>
               <p>Oi, meu amor! Hoje é um dia especial pra nós, e com certeza vai ser eternizado pro resto das nossas vidas...</p>
@@ -149,8 +149,8 @@ export default function Album() {
 
       {/* 6 — uma lembrança */}
       <Section label="Lembrança" className={styles.pinboard}>
-        <Memory col="1 / span 11" colD="2 / span 4" row="1" align="start" from="left">
-          <Note tone="cream" edge={4} rotate={-2}>
+        <Memory col="1 / -1" colD="2 / span 4" row="1" align="start" from="left">
+          <Note tone="cream" edge={4} rotate={-2} className={styles.memoryLetter}>
             <div className={styles.letter}>
               <p>Cara, é surreal o nível de intimidade que a gente chegou. Hoje eu penso em como sou próximo de você e, sinceramente, me assusto. Porque se tu acha normal eu me dar bem com a tua mãe, ter a confiança do teu pai e ter conhecido praticamente tua família inteira, tu tá bem mal acostumada, papo reto KKKKKKKKKKKKKKKKKK</p>
               <p>Eu amo correr com você, meu amor, porque você me motiva a cuidar cada vez mais do meu corpo e prova que namorar não é só comer besteira e assistir filme. Na verdade, você é tão foda que consegue fazer eu comer besteira e assistir filme, mas, se eu tiver na disposição, a gente corre não sei quantos km juntos...</p>
@@ -158,19 +158,29 @@ export default function Album() {
             </div>
           </Note>
         </Memory>
-        <Memory col="6 / span 7" colD="7 / span 4" row="1" shift="0, 5.2rem" delay={160} from="right">
+        <Memory col="2 / span 10" colD="7 / span 4" row="2" rowD="1" shift="0, 0" shiftD="0, 5.2rem" delay={160} from="right">
           <div className={styles.stage}>
             <Polaroid {...photos[5]} rotate={5} tape tapeTone="lilac" />
             <Flower variant="bud" size="4.2rem" rotate={-8} flip style={{ right: "-1rem", bottom: "-2.6rem", zIndex: 1 }} />
           </div>
         </Memory>
-        <Memory col="1 / span 6" colD="2 / span 3" row="2" rowD="2" z={0} shift="1rem, 3.4rem" delay={240}>
+        <Memory col="1 / span 6" colD="2 / span 3" row="3" rowD="2" z={0} shift="1rem, 3.4rem" delay={240}>
           <Doodle shape="loop" width="100%" />
         </Memory>
       </Section>
 
       {/* 7 — novas fotos */}
-      <Section label="Mais fotos" gap="0.5rem">
+      <Section label="Mais fotos" gap="0.5rem" className={styles.photoMural}>
+        <svg className={styles.muralThread} viewBox="0 0 800 420" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M160 120 C255 85 300 145 400 160 S560 205 650 125" />
+          {[160, 400, 650].map((x, i) => (
+            <g key={x} transform={`translate(${x} ${[120, 160, 125][i]})`}>
+              <circle className={styles.pinShadow} r="8" cy="2" />
+              <circle className={styles.pinHead} r="6" />
+              <circle className={styles.pinHighlight} r="1.8" cx="-1.8" cy="-1.8" />
+            </g>
+          ))}
+        </svg>
         <Memory col="1 / span 6" colD="2 / span 3" row="1" rowD="1" align="start" from="left">
           <Polaroid {...photos[6]} rotate={-2.5} tape tapeTone="orange" />
         </Memory>
@@ -239,7 +249,30 @@ export default function Album() {
           />
         </Memory>
 
-        <Memory col="2 / span 11" colD="4 / span 6" row="8" rowD="6" shift="0, 1.4rem" shiftD="0, 0.5rem" delay={100}>
+        <Memory col="2 / span 10" colD="3 / span 4" row="8" rowD="6" shift="0, 1rem" from="left" delay={100}>
+          <div className={styles.stage}>
+            <Flower variant="bud" size="4.2rem" rotate={-14} style={{ left: "-1.2rem", bottom: "-2.6rem", zIndex: 1 }} />
+            <Polaroid src={image("louis.webp")} alt="Louis Tomlinson" caption="Louis Tomlinson" ratio="3 / 4" rotate={-3} tape tapeTone="orange" style={{ zIndex: 2 }} />
+          </div>
+        </Memory>
+        <Memory col="1 / -1" colD="7 / span 6" row="9" rowD="6" shift="0, 1.2rem" shiftD="0, 0">
+          <Note tone="cream" edge={1} rotate={1}>
+            <div className={`${styles.letter} ${styles.short}`}>
+              <p>“We Made It”, do Louis Tomlinson, foi uma música que você me dedicou e representa muito o que somos.</p>
+            </div>
+          </Note>
+        </Memory>
+        <Memory col="1 / -1" colD="2 / span 8" row="10" rowD="7" shift="0, -0.4rem" shiftD="0, -1.5rem" delay={100}>
+          <Lyrics
+            tone="violet"
+            edge={2}
+            rotate={-0.8}
+            lines={["Met you at your doorstep, remember how it tasted", "Looking into your eyes, baby, you were still high", "Never coming down with your hand in mine"]}
+            credit={<a href="https://open.spotify.com/search/We%20Made%20It%20Louis%20Tomlinson" target="_blank" rel="noopener noreferrer">We Made It · Louis Tomlinson</a>}
+          />
+        </Memory>
+
+        <Memory col="2 / span 11" colD="4 / span 6" row="11" rowD="8" shift="0, 1.4rem" shiftD="0, 0.5rem" delay={100}>
           <Note tone="cream" edge={2} rotate={1.2}>
             <div className={`${styles.letter} ${styles.short}`}>
               <p>Acredito que a melhor forma de te conhecer é saber das coisas de que tu gosta, e eu estou disposto a sempre fazer isso.</p>
