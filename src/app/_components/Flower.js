@@ -45,6 +45,7 @@ export default function Flower({
             {PETALS.map((p, i) => (
               <g key={i} transform={`rotate(${p.a} 100 112) translate(${100 - 100 * p.s} ${112 - 112 * p.s}) scale(${p.s})`}>
                 <path d={PETAL} fill={p.c} />
+                <path d="M100 110 C 94 84, 96 50, 100 18 C 104 50, 106 84, 100 110 Z" fill="#934737" opacity="0.45" />
                 <path d="M100 108 C 98 80, 99 44, 100 14" stroke="#f1e5cc" strokeWidth="2" strokeLinecap="round" opacity="0.55" />
               </g>
             ))}

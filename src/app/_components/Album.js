@@ -6,6 +6,7 @@ import Paper from "./Paper";
 import Flower from "./Flower";
 import Doodle from "./Doodle";
 import Tape from "./Tape";
+import Stamp from "./Stamp";
 import styles from "./Album.module.css";
 
 const photos = [
@@ -49,7 +50,7 @@ export default function Album() {
             <Polaroid src={photos[0]} alt="Memória do casal" rotate={-3} tape tapeTone="orange" ratio="4 / 5" style={{ zIndex: 3 }} />
           </div>
         </Memory>
-        <Memory col="5 / span 8" colD="7 / span 4" row="2" rowD="2" shift="0, -2.4rem" delay={150} from="right">
+        <Memory col="2 / span 11" colD="7 / span 4" row="2" rowD="2" shift="0, -2.4rem" delay={150} from="right">
           <Note tone="cream" edge={2} rotate={2.5}>
             <div className={styles.letter}>
               <p>Oi, meu amor! Hoje é um dia especial pra nós, e com certeza vai ser eternizado pro resto das nossas vidas...</p>
@@ -98,7 +99,7 @@ export default function Album() {
             <Polaroid src={photos[4]} alt="Memória do casal" rotate={1.5} tape tapeTone="orange" ratio="4 / 5" style={{ zIndex: 2 }} />
           </div>
         </Memory>
-        <Memory col="4 / span 9" colD="8 / span 4" row="2" rowD="1" shift="0, -3rem" align="center" delay={160} from="right">
+        <Memory col="2 / span 11" colD="8 / span 4" row="2" rowD="1" shift="0, -3rem" align="center" delay={160} from="right">
           <Note tone="orange" edge={4} rotate={-2.5}>
             <div className={styles.letter}>
               <p>Você é iluminada, meu amor, iluminada de corpo e alma. Tudo o que vem de você me deixa admirado e impressionado. Eu amo de verdade o jeito que você trata as coisas, o jeito que lida com as pessoas, o jeito que lida comigo. É coisa de outro mundo, meu bem, e eu quero te ter pro resto da minha vida. Você coloriu minha vida de roxo e laranja, e a cada dia me traz mais um motivo pra acordar. Independente do cansaço ou da preguiça, eu acordo com um sorriso no rosto por saber que vou ter a minha companheira ali comigo, sempre pronta pra me apoiar.</p>
@@ -128,7 +129,7 @@ export default function Album() {
 
       {/* 6 — uma lembrança */}
       <Section label="Lembrança">
-        <Memory col="1 / span 8" colD="2 / span 4" row="1" align="start" from="left">
+        <Memory col="1 / span 11" colD="2 / span 4" row="1" align="start" from="left">
           <Note tone="cream" edge={4} rotate={-2}>
             <div className={styles.letter}>
               <p>Cara, é surreal o nível de intimidade que a gente chegou. Hoje eu penso em como sou próximo de você e, sinceramente, me assusto. Porque se tu acha normal eu me dar bem com a tua mãe, ter a confiança do teu pai e ter conhecido praticamente tua família inteira, tu tá bem mal acostumada, papo reto KKKKKKKKKKKKKKKKKK</p>
@@ -165,9 +166,10 @@ export default function Album() {
       <Section label="Mensagem final">
         <Memory col="1 / -1" colD="3 / span 8">
           <div className={styles.stage}>
-            <Flower variant="bloom" size="7rem" rotate={10} flip style={{ right: "-1.6rem", bottom: "-4.4rem", zIndex: 3 }} />
-            <Flower variant="bud" size="4.6rem" rotate={-12} style={{ left: "-0.4rem", bottom: "-3.2rem", zIndex: 3 }} />
+            <Flower variant="bloom" size="7rem" rotate={10} flip style={{ right: "-1rem", bottom: "-8.2rem", zIndex: 3 }} />
+            <Flower variant="bud" size="4.6rem" rotate={-12} style={{ left: "0.2rem", bottom: "-5.2rem", zIndex: 3 }} />
             <Tape tone="orange" rotate={3} style={{ top: "-0.7rem", right: "2rem" }} />
+            <Stamp rotate={-6} style={{ right: "1.2rem", top: "-3.4rem", zIndex: 4 }} />
             <Note tone="cream" edge={2} rotate={0.8}>
               <div className={styles.letter}>
                 <p>De todas as pessoas, de todos os momentos, de todos os sentimentos, de todas as emoções, é você, Beatriz de Moraes Bertoldo, que eu escolho. É você que eu escolho pra minha vida, é ao seu lado que eu quero acordar todos os dias, e é em você que eu quero depositar toda a minha confiança e o meu amor. Porque você é a mulher que, independente de tudo o que passou, quis apostar todas as suas fichas em mim. Sério, de onde tu tirou que ir fazer um simulado com um estranho seria uma ótima ideia? KKKKKKKKKKKKKKKKKKKK Isso me impressiona demais e me mostra quem tu é de verdade, meu amor!</p>
