@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useLenis } from "lenis/react";
 import Envelope from "./Envelope";
 import Album from "./Album";
 import styles from "./Experience.module.css";
@@ -24,6 +25,7 @@ const PETALS = [
 export default function Experience() {
   const [loading, setLoading] = useState(true);
   const [state, setState] = useState("closed"); // closed | opening | open
+  const lenis = useLenis();
   const coverRef = useRef(null);
   const albumRef = useRef(null);
   const barRef = useRef(null);
@@ -40,10 +42,11 @@ export default function Experience() {
   }
 
   function discover() {
-    albumRef.current?.scrollIntoView({
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-      block: "start",
-    });
+    const target = albumRef.current;
+    if (!target) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (lenis) lenis.scrollTo(target, { immediate: reduce });
+    else target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
   }
 
   /* inclinação/parallax: só atualiza variáveis CSS, sem re-render */

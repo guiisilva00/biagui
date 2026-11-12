@@ -1,5 +1,7 @@
 import { Cormorant_Garamond, Caveat, Fraunces } from "next/font/google";
+import "lenis/dist/lenis.css";
 import "./globals.css";
+import LenisScroll from "./_components/LenisScroll";
 
 const serif = Cormorant_Garamond({
   variable: "--font-serif",
@@ -33,7 +35,9 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR" className={`${serif.variable} ${hand.variable} ${fat.variable}`}>
-      <body>{children}</body>
+      <body>
+        <LenisScroll>{children}</LenisScroll>
+      </body>
     </html>
   );
 }

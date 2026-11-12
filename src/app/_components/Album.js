@@ -13,25 +13,27 @@ import styles from "./Album.module.css";
 
 // Em cada foto, edite src (arquivo), alt (descrição acessível) e caption (legenda).
 // A lista segue exatamente a ordem em que as fotos aparecem na página.
+const image = (filename) => `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/img/${filename}`;
+
 const photos = [
   // 1. Primeira composição — edite src, alt e caption desta foto.
-  { src: "/img/WhatsApp Image 2026-11-11 at 19.44.42.jpeg", alt: "Foto do casal", caption: "Nosso primeiro dia juntos." },
+  { src: image("WhatsApp Image 2026-11-11 at 19.44.42.jpeg"), alt: "Foto do casal", caption: "Nosso primeiro dia juntos." },
   // 2. Primeira foto da sequência.
-  { src: "/img/WhatsApp Image 2026-11-11 at 19.52.37.jpeg", alt: "Foto do casal", caption: "Terceiro dia juntos e primeiro beijo." },
+  { src: image("WhatsApp Image 2026-11-11 at 19.52.37.jpeg"), alt: "Foto do casal", caption: "Terceiro dia juntos e primeiro beijo." },
   // 3. Segunda foto da sequência.
-  { src: "/img/WhatsApp Image 2026-11-11 at 19.59.17.jpeg", alt: "Foto do casal", caption: "Meu aniversário" },
+  { src: image("WhatsApp Image 2026-11-11 at 19.59.17.jpeg"), alt: "Foto do casal", caption: "Meu aniversário" },
   // 4. Última foto da sequência.
-  { src: "/img/WhatsApp Image 2026-11-11 at 20.16.21.jpeg", alt: "Foto do casal", caption: "Casais legais mantém o cinema vivo!" },
+  { src: image("WhatsApp Image 2026-11-11 at 20.16.21.jpeg"), alt: "Foto do casal", caption: "Casais legais mantém o cinema vivo!" },
   // 5. Seção Foto grande.
-  { src: "/img/iluminada.jpeg", alt: "Foto do casal", caption: "O cabelo mais lindo do MUNDO!" },
+  { src: image("iluminada.jpeg"), alt: "Foto do casal", caption: "O cabelo mais lindo do MUNDO!" },
   // 6. Seção Lembrança.
-  { src: "/img/WhatsApp Image 2026-11-11 at 20.18.36.jpeg", alt: "Foto do casal", caption: "O méqui sempre vai ser nosso" },
+  { src: image("WhatsApp Image 2026-11-11 at 20.18.36.jpeg"), alt: "Foto do casal", caption: "O méqui sempre vai ser nosso" },
   // 7. Primeira foto de Mais fotos.
-  { src: "/img/WhatsApp Image 2026-11-11 at 20.19.03.jpeg", alt: "Foto do casal", caption: "Nessa foto falavam que a gente era igual" },
+  { src: image("WhatsApp Image 2026-11-11 at 20.19.03.jpeg"), alt: "Foto do casal", caption: "Nessa foto falavam que a gente era igual" },
   // 8. Segunda foto de Mais fotos.
-  { src: "/img/WhatsApp Image 2026-11-11 at 20.21.45.jpeg", alt: "Foto do casal", caption: "12/06/2026" },
+  { src: image("WhatsApp Image 2026-11-11 at 20.21.45.jpeg"), alt: "Foto do casal", caption: "12/06/2026" },
   // 9. Terceira foto de Mais fotos.
-  { src: "/img/WhatsApp Image 2026-11-11 at 20.22.22.jpeg", alt: "Foto do casal", caption: "Penso em você toda noite, quero você todo dia" },
+  { src: image("WhatsApp Image 2026-11-11 at 20.22.22.jpeg"), alt: "Foto do casal", caption: "Penso em você toda noite, quero você todo dia" },
 ];
 
 /*
@@ -185,7 +187,7 @@ export default function Album() {
         <Memory col="1 / -1" colD="2 / span 7" row="1" rowD="1">
           <Note tone="cream" edge={3} rotate={-1}>
             <div className={styles.letter}>
-              <p>Amor, tu sabe que eu nunca fui de escutar muito alguns dos artistas que você gosta, e até fui ao show deles. Inclusive, tem até pôster deles no teu quarto... Engraçado que pôster meu não tem, né? CABEÇUDA.</p>
+              <p>Amor, tu sabe que eu nunca fui de escutar muito os artistas que você gosta, os mesmos que tu até foi ao show. Inclusive, tem até caneca e pôster deles no teu quarto... Engraçado que pôster com a minha cara não tem, né? CABEÇUDA.</p>
               <p>Mas eu queria te dedicar duas músicas que você provavelmente conhece dos seus artistas e, se não conhece, vale a pena ouvir e prestar atenção na letra.</p>
             </div>
           </Note>
@@ -194,7 +196,7 @@ export default function Album() {
         <Memory col="2 / span 8" colD="2 / span 4" row="2" rowD="2 / span 2" shift="0, 1rem" from="left" delay={100}>
           <div className={styles.stage}>
             <Flower variant="bud" size="4.2rem" rotate={-14} style={{ left: "-1.2rem", bottom: "-2.6rem", zIndex: 1 }} />
-            <Polaroid src="/img/adore-you.jpg" alt="Foto do artista da música Adore You" caption="Adore You" ratio="3 / 4" rotate={-3} tape tapeTone="orange" style={{ zIndex: 2 }} />
+            <Polaroid src={image("adore-you.jpg")} alt="Foto do artista da música Adore You" caption="Harry Styles" ratio="3 / 4" rotate={-3} tape tapeTone="orange" style={{ zIndex: 2 }} />
           </div>
         </Memory>
         <Memory col="1 / -1" colD="6 / span 6" row="3" rowD="2" shift="0, 1.2rem" shiftD="0, 0">
@@ -205,13 +207,19 @@ export default function Album() {
           </Note>
         </Memory>
         <Memory col="1 / -1" colD="5 / span 8" row="4" rowD="3" shift="0, -0.4rem" shiftD="0, -1.5rem" delay={100}>
-          <Lyrics tone="violet" edge={2} rotate={-0.8} lines={["I get so lost inside your eyes", "Would you believe it?"]} credit="Adore You · Harry Styles" />
+          <Lyrics
+            tone="violet"
+            edge={2}
+            rotate={-0.8}
+            lines={["I get so lost inside your eyes", "Would you believe it?"]}
+            credit={<a href="https://open.spotify.com/track/3jjujdWJ72nww5eGnfs2E7" target="_blank" rel="noopener noreferrer">Adore You · Harry Styles</a>}
+          />
         </Memory>
 
         <Memory col="4 / span 9" colD="9 / span 4" row="5" rowD="4 / span 2" shift="0, 1.5rem" from="right" delay={100}>
           <div className={styles.stage}>
             <Flower variant="bloom" size="5.4rem" rotate={16} flip style={{ right: "-1.2rem", bottom: "-3.4rem", zIndex: 1 }} />
-            <Polaroid src="/img/silver-tongues.jpg" alt="Foto do artista da música Silver Tongues" caption="Silver Tongues" ratio="4 / 3" rotate={3} tape tapeTone="lilac" style={{ zIndex: 2 }} />
+            <Polaroid src={image("silver-tongues.jpg")} alt="Foto do artista da música Silver Tongues" caption="Louis Tomlinson" ratio="4 / 3" rotate={3} tape tapeTone="lilac" style={{ zIndex: 2 }} />
           </div>
         </Memory>
         <Memory col="1 / -1" colD="2 / span 6" row="6" rowD="4" shift="0, 2rem" shiftD="0, 0">
@@ -222,7 +230,13 @@ export default function Album() {
           </Note>
         </Memory>
         <Memory col="1 / -1" colD="1 / span 8" row="7" rowD="5" shift="0, 0.8rem" shiftD="0, -1.5rem" delay={100}>
-          <Lyrics tone="sage" edge={3} rotate={0.8} lines={["Those stupid jokes", "Only we know", "Those songs we wrote", "Only we know"]} credit="Silver Tongues · Louis Tomlinson" />
+          <Lyrics
+            tone="sage"
+            edge={3}
+            rotate={0.8}
+            lines={["Those stupid jokes", "Only we know", "Those songs we wrote", "Only we know"]}
+            credit={<a href="https://open.spotify.com/track/29z96EFvG0L1wcj5kkIHzk" target="_blank" rel="noopener noreferrer">Silver Tongues · Louis Tomlinson</a>}
+          />
         </Memory>
 
         <Memory col="2 / span 11" colD="4 / span 6" row="8" rowD="6" shift="0, 1.4rem" shiftD="0, 0.5rem" delay={100}>

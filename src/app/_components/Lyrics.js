@@ -60,7 +60,7 @@ export default function Lyrics({ lines, tone = "violet", edge = 1, rotate = 0, c
       <div ref={boxRef} className={styles.lyrics}>
         {lines.map((text, i) => (
           <p
-            key={text}
+            key={i}
             ref={(el) => (lineRefs.current[i] = el)}
             className={styles.line}
             data-active={active === i}
@@ -70,6 +70,7 @@ export default function Lyrics({ lines, tone = "violet", edge = 1, rotate = 0, c
           </p>
         ))}
         {credit && <p className={styles.credit}>{credit}</p>}
+        <p className={styles.hint}>(clique no nome da musica pra ir pro spotify)</p>
       </div>
     </Paper>
   );
