@@ -1,0 +1,30 @@
+.stamp {
+  position: absolute;
+  width: 3.6rem;
+  transform: rotate(var(--rot));
+  filter: drop-shadow(0 2px 3px rgba(52, 43, 56, 0.3));
+}
+
+/* perfuração: borda pontilhada */
+.face {
+  padding: 0.35rem;
+  aspect-ratio: 3 / 4;
+  background: var(--paper-light);
+  border: 4px dotted var(--paper-light);
+  box-shadow: inset 0 0 0 3px var(--paper-light);
+}
+.face svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--plum);
+}
+
+.mark {
+  position: absolute;
+  left: -2.4rem;
+  top: 0.6rem;
+  width: 6.4rem;
+  color: rgba(52, 43, 56, 0.5);
+  mix-blend-mode: multiply;
+}

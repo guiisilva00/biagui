@@ -1,0 +1,99 @@
+.album {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 0% 0%, rgba(153, 104, 71, .17), transparent 38%),
+    radial-gradient(ellipse at 100% 32%, rgba(177, 126, 82, .12), transparent 35%),
+    radial-gradient(ellipse at 12% 100%, rgba(153, 104, 71, .12), transparent 34%),
+    radial-gradient(ellipse at 50% 45%, rgba(255, 250, 240, .58), transparent 72%),
+    linear-gradient(120deg, #f1e5cc, #ead9ba 48%, #f2e5ca);
+  box-shadow:
+    inset 0 0 0 1px rgba(91, 49, 95, .09),
+    inset 0 0 42px rgba(112, 74, 50, .12),
+    inset 0 12px 34px rgba(91, 49, 95, .04);
+}
+
+.album::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: var(--grain);
+  opacity: .14;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.album > section { z-index: 1; }
+
+.strip {
+  position: absolute;
+  z-index: 0;
+  transform: rotate(var(--r));
+  opacity: .66;
+}
+
+.stage { position: relative; }
+.phrase { text-align: center; }
+.underline { display: block; margin: 1.4rem auto 0; }
+
+.letter {
+  color: var(--ink);
+  font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+  line-height: 1.7;
+  overflow-wrap: break-word;
+}
+
+/* capitular: a carta começa como começam as cartas */
+.letter p:first-child::first-letter {
+  float: left;
+  margin: 0.04em 0.12em 0 0;
+  font-size: 2.7em;
+  line-height: 0.82;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--rust);
+}
+
+.letter p + p { margin-top: 1em; }
+
+.letter .signature {
+  margin-top: 1.5em;
+  color: var(--plum);
+  font-family: var(--font-note);
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.05;
+  text-align: center;
+  transform: rotate(-2deg);
+}
+
+.seal {
+  position: absolute;
+  left: calc(50% - 1.6rem);
+  bottom: -1.5rem;
+  z-index: 3;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #c98260, var(--rust));
+  box-shadow: 0 2px 3px rgba(52, 43, 56, .22), 0 8px 14px -4px rgba(52, 43, 56, .25), inset 0 0 0 3px rgba(255, 250, 240, .24);
+}
+
+@media (max-width: 899px) {
+  .seal { bottom: -3rem; }
+}
+
+.end { height: 9rem; }
+
+/* bilhetes de um parágrafo só: sem capitular */
+.letter.short p:first-child::first-letter {
+  float: none;
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  color: inherit;
+}

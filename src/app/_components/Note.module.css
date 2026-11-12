@@ -1,0 +1,45 @@
+.note {
+  display: grid;
+  gap: 0.9rem;
+  min-width: 9rem;
+}
+
+.note[data-align="center"] {
+  text-align: center;
+  justify-items: center;
+}
+
+.hint {
+  font-family: var(--font-note);
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--ink-soft);
+  opacity: 1;
+}
+
+.lines {
+  display: grid;
+  gap: 0.8rem;
+}
+.note[data-align="center"] .lines {
+  width: 100%;
+  justify-items: center;
+}
+
+.bar {
+  display: block;
+  height: 0.5rem;
+  border-radius: 1rem;
+  background: currentColor;
+  opacity: 0.13;
+}
+
+.title {
+  display: block;
+  width: 46%;
+  height: 0.85rem;
+  margin-bottom: 0.3rem;
+  border-radius: 1rem;
+  background: var(--terracotta);
+  opacity: 0.64;
+}

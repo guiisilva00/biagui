@@ -1,0 +1,63 @@
+.lyrics {
+  display: grid;
+  gap: clamp(1.1rem, 4vw, 1.9rem);
+  padding: clamp(0.5rem, 2vw, 1.25rem) 0;
+}
+
+.line {
+  font-family: var(--font-fat), "Fraunces", Georgia, serif;
+  font-variation-settings: "SOFT" 100, "WONK" 0, "opsz" 144;
+  font-size: clamp(2rem, 8.4vw, 3.5rem);
+  font-weight: 850;
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  cursor: pointer;
+  opacity: 0.36;
+  transform: translateX(0);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.line[data-active="true"] {
+  opacity: 1;
+  transform: translateX(0.35rem);
+}
+
+.line:hover {
+  opacity: 0.7;
+}
+.line[data-active="true"]:hover {
+  opacity: 1;
+}
+
+.credit {
+  margin-top: 0.4rem;
+  font-family: var(--font-note);
+  font-size: 1.35rem;
+  line-height: 1;
+  opacity: 0.75;
+}
+
+.credit a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hint {
+  justify-self: end;
+  color: var(--white);
+  font-family: var(--font-note);
+  font-size: 1rem;
+  line-height: 1.1;
+  text-align: right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    transition: opacity 0.2s ease;
+  }
+  .line[data-active="true"] {
+    transform: none;
+  }
+}

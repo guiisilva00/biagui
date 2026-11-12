@@ -1,0 +1,23 @@
+.tape {
+  position: absolute;
+  z-index: 3;
+  width: 5.2rem;
+  height: 1.55rem;
+  transform: rotate(var(--rot));
+  opacity: 0.86;
+  background: var(--c);
+  clip-path: polygon(0 8%, 4% 0, 8% 10%, 12% 0, 100% 0, 96% 25%, 100% 50%, 96% 75%, 100% 100%, 12% 100%, 8% 90%, 4% 100%, 0 92%, 3% 50%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+.tape[data-tone="lilac"] {
+  --c: rgba(169, 130, 168, .72);
+  background-image: radial-gradient(circle, rgba(255, 250, 240, 0.6) 1.4px, transparent 1.8px);
+  background-size: 9px 9px;
+}
+.tape[data-tone="orange"] {
+  --c: rgba(184, 92, 69, .78);
+  background-image: repeating-linear-gradient(135deg, rgba(255, 250, 240, 0.3) 0 4px, transparent 4px 10px);
+}
+.tape[data-tone="cream"] {
+  --c: rgba(247, 239, 222, .82);
+}
