@@ -86,3 +86,14 @@
 }
 
 .end { height: 9rem; }
+
+/* bilhetes de um parágrafo só: sem capitular */
+.letter.short p:first-child::first-letter {
+  float: none;
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  color: inherit;
+}
