@@ -57,14 +57,14 @@ export default function Album() {
       </div>
 
       {/* 1 — primeira composição */}
-      <Section label="Primeira composição">
+      <Section label="Primeira composição" className={styles.pinboard}>
         <Memory col="2 / span 10" colD="2 / span 5" row="1" rowD="1 / span 2" from="left">
           <div className={styles.stage}>
             <Flower variant="bloom" size="7.5rem" rotate={-14} style={{ left: "-2.2rem", bottom: "-3.2rem", zIndex: 2 }} />
             <Polaroid {...photos[0]} rotate={-3} tape tapeTone="orange" ratio="16 / 9" style={{ zIndex: 3 }} />
           </div>
         </Memory>
-        <Memory col="2 / span 11" colD="7 / span 4" row="2" rowD="2" shift="0, -2.4rem" delay={150} from="right">
+        <Memory col="2 / span 11" colD="7 / span 4" row="2" rowD="2" shift="0, 0" shiftD="0, -2.4rem" delay={150} from="right">
           <Note tone="cream" edge={2} rotate={2.5}>
             <div className={styles.letter}>
               <p>Oi, meu amor! Hoje é um dia especial pra nós, e com certeza vai ser eternizado pro resto das nossas vidas...</p>
@@ -95,7 +95,7 @@ export default function Album() {
       </Section>
 
       {/* 3 — uma mensagem maior */}
-      <Section label="Mensagem">
+      <Section label="Mensagem" className={styles.pinboard}>
         <Memory col="1 / -1" colD="3 / span 7">
           <div className={styles.stage}>
             <Flower variant="bud" size="5rem" rotate={12} style={{ right: "-0.6rem", top: "-4.4rem", zIndex: 1 }} />
@@ -112,7 +112,7 @@ export default function Album() {
       </Section>
 
       {/* 4 — uma foto grande */}
-      <Section label="Foto grande">
+      <Section label="Foto grande" className={styles.pinboard}>
         <Memory col="1 / -1" colD="1 / span 7" row="1" from="left">
           <div className={styles.stage}>
             <Flower variant="bloom" size="6rem" rotate={-22} style={{ left: "-1.6rem", top: "-3.6rem", zIndex: 1 }} />
@@ -131,7 +131,7 @@ export default function Album() {
       </Section>
 
       {/* 5 — uma frase */}
-      <Section label="Frase">
+      <Section label="Frase" className={styles.pinboard}>
         <Memory col="1 / -1" colD="2 / span 10">
           <div className={styles.stage}>
             <Doodle shape="stars" width="2.6rem" style={{ position: "absolute", top: "-1.6rem", right: "1.4rem", zIndex: 2 }} />
@@ -148,9 +148,9 @@ export default function Album() {
       </Section>
 
       {/* 6 — uma lembrança */}
-      <Section label="Lembrança">
-        <Memory col="1 / span 11" colD="2 / span 4" row="1" align="start" from="left">
-          <Note tone="cream" edge={4} rotate={-2}>
+      <Section label="Lembrança" className={styles.pinboard}>
+        <Memory col="1 / -1" colD="2 / span 4" row="1" align="start" from="left">
+          <Note tone="cream" edge={4} rotate={-2} className={styles.memoryLetter}>
             <div className={styles.letter}>
               <p>Cara, é surreal o nível de intimidade que a gente chegou. Hoje eu penso em como sou próximo de você e, sinceramente, me assusto. Porque se tu acha normal eu me dar bem com a tua mãe, ter a confiança do teu pai e ter conhecido praticamente tua família inteira, tu tá bem mal acostumada, papo reto KKKKKKKKKKKKKKKKKK</p>
               <p>Eu amo correr com você, meu amor, porque você me motiva a cuidar cada vez mais do meu corpo e prova que namorar não é só comer besteira e assistir filme. Na verdade, você é tão foda que consegue fazer eu comer besteira e assistir filme, mas, se eu tiver na disposição, a gente corre não sei quantos km juntos...</p>
@@ -158,19 +158,29 @@ export default function Album() {
             </div>
           </Note>
         </Memory>
-        <Memory col="6 / span 7" colD="7 / span 4" row="1" shift="0, 5.2rem" delay={160} from="right">
+        <Memory col="2 / span 10" colD="7 / span 4" row="2" rowD="1" shift="0, 0" shiftD="0, 5.2rem" delay={160} from="right">
           <div className={styles.stage}>
             <Polaroid {...photos[5]} rotate={5} tape tapeTone="lilac" />
             <Flower variant="bud" size="4.2rem" rotate={-8} flip style={{ right: "-1rem", bottom: "-2.6rem", zIndex: 1 }} />
           </div>
         </Memory>
-        <Memory col="1 / span 6" colD="2 / span 3" row="2" rowD="2" z={0} shift="1rem, 3.4rem" delay={240}>
+        <Memory col="1 / span 6" colD="2 / span 3" row="3" rowD="2" z={0} shift="1rem, 3.4rem" delay={240}>
           <Doodle shape="loop" width="100%" />
         </Memory>
       </Section>
 
       {/* 7 — novas fotos */}
-      <Section label="Mais fotos" gap="0.5rem">
+      <Section label="Mais fotos" gap="0.5rem" className={styles.photoMural}>
+        <svg className={styles.muralThread} viewBox="0 0 800 420" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M160 120 C255 85 300 145 400 160 S560 205 650 125" />
+          {[160, 400, 650].map((x, i) => (
+            <g key={x} transform={`translate(${x} ${[120, 160, 125][i]})`}>
+              <circle className={styles.pinShadow} r="8" cy="2" />
+              <circle className={styles.pinHead} r="6" />
+              <circle className={styles.pinHighlight} r="1.8" cx="-1.8" cy="-1.8" />
+            </g>
+          ))}
+        </svg>
         <Memory col="1 / span 6" colD="2 / span 3" row="1" rowD="1" align="start" from="left">
           <Polaroid {...photos[6]} rotate={-2.5} tape tapeTone="orange" />
         </Memory>
@@ -183,7 +193,7 @@ export default function Album() {
       </Section>
 
       {/* músicas dedicadas — texto normal + letras gordinhas */}
-      <Section label="Músicas" gap="1.5rem">
+      <Section label="Músicas" gap="1.5rem" className={styles.pinboard}>
         <Memory col="1 / -1" colD="2 / span 7" row="1" rowD="1">
           <Note tone="cream" edge={3} rotate={-1}>
             <div className={styles.letter}>
@@ -196,13 +206,13 @@ export default function Album() {
         <Memory col="2 / span 8" colD="2 / span 4" row="2" rowD="2 / span 2" shift="0, 1rem" from="left" delay={100}>
           <div className={styles.stage}>
             <Flower variant="bud" size="4.2rem" rotate={-14} style={{ left: "-1.2rem", bottom: "-2.6rem", zIndex: 1 }} />
-            <Polaroid src={image("adore-you.jpg")} alt="Foto do artista da música Adore You" caption="Harry Styles" ratio="3 / 4" rotate={-3} tape tapeTone="orange" style={{ zIndex: 2 }} />
+            <Polaroid src={image("hungria.jpg")} alt="Foto do Hungria" caption="Hungria" ratio="3 / 4" rotate={-3} tape tapeTone="orange" style={{ zIndex: 2 }} />
           </div>
         </Memory>
         <Memory col="1 / -1" colD="6 / span 6" row="3" rowD="2" shift="0, 1.2rem" shiftD="0, 0">
           <Note tone="cream" edge={1} rotate={1}>
             <div className={`${styles.letter} ${styles.short}`}>
-              <p>A primeira música é do Harry Styles, “Adore You”, e eu achei muito lindas as partes:</p>
+              <p>A música “Amor e Fé”, do Hungria, tem essas partes que eu achei muito lindas:</p>
             </div>
           </Note>
         </Memory>
@@ -211,8 +221,8 @@ export default function Album() {
             tone="violet"
             edge={2}
             rotate={-0.8}
-            lines={["I get so lost inside your eyes", "Would you believe it?"]}
-            credit={<a href="https://open.spotify.com/track/3jjujdWJ72nww5eGnfs2E7" target="_blank" rel="noopener noreferrer">Adore You · Harry Styles</a>}
+            lines={["Tá pra nascer um maloqueiro disposto a soltar o dedo só por causa dela", "Aí eu penso o tempo inteiro e até bate o desespero, o que sou eu sem ela?"]}
+            credit={<a href="https://open.spotify.com/intl-pt/track/5ra6CI0pEzqjxPEZeBz0d7?si=99856a4317db49c0" target="_blank" rel="noopener noreferrer">Amor e Fé · Hungria</a>}
           />
         </Memory>
 
@@ -239,7 +249,30 @@ export default function Album() {
           />
         </Memory>
 
-        <Memory col="2 / span 11" colD="4 / span 6" row="8" rowD="6" shift="0, 1.4rem" shiftD="0, 0.5rem" delay={100}>
+        <Memory col="2 / span 10" colD="3 / span 4" row="8" rowD="6" shift="0, 1rem" from="left" delay={100}>
+          <div className={styles.stage}>
+            <Flower variant="bud" size="4.2rem" rotate={-14} style={{ left: "-1.2rem", bottom: "-2.6rem", zIndex: 1 }} />
+            <Polaroid src={image("louis.webp")} alt="Louis Tomlinson" caption="Louis Tomlinson" ratio="3 / 4" rotate={-3} tape tapeTone="orange" style={{ zIndex: 2 }} />
+          </div>
+        </Memory>
+        <Memory col="1 / -1" colD="7 / span 6" row="9" rowD="6" shift="0, 1.2rem" shiftD="0, 0">
+          <Note tone="cream" edge={1} rotate={1}>
+            <div className={`${styles.letter} ${styles.short}`}>
+              <p>“We Made It”, do Louis Tomlinson, foi uma música que você me dedicou e representa muito o que somos.</p>
+            </div>
+          </Note>
+        </Memory>
+        <Memory col="1 / -1" colD="2 / span 8" row="10" rowD="7" shift="0, -0.4rem" shiftD="0, -1.5rem" delay={100}>
+          <Lyrics
+            tone="violet"
+            edge={2}
+            rotate={-0.8}
+            lines={["Met you at your doorstep, remember how it tasted", "Looking into your eyes, baby, you were still high", "Never coming down with your hand in mine"]}
+            credit={<a href="https://open.spotify.com/search/We%20Made%20It%20Louis%20Tomlinson" target="_blank" rel="noopener noreferrer">We Made It · Louis Tomlinson</a>}
+          />
+        </Memory>
+
+        <Memory col="2 / span 11" colD="4 / span 6" row="11" rowD="8" shift="0, 1.4rem" shiftD="0, 0.5rem" delay={100}>
           <Note tone="cream" edge={2} rotate={1.2}>
             <div className={`${styles.letter} ${styles.short}`}>
               <p>Acredito que a melhor forma de te conhecer é saber das coisas de que tu gosta, e eu estou disposto a sempre fazer isso.</p>
@@ -249,7 +282,7 @@ export default function Album() {
       </Section>
 
       {/* 8 — mensagem final */}
-      <Section label="Mensagem final">
+      <Section label="Mensagem final" className={styles.pinboard}>
         <Memory col="1 / -1" colD="3 / span 8">
           <div className={styles.stage}>
             <Flower variant="bloom" size="7rem" rotate={10} flip style={{ right: "-1rem", bottom: "-8.2rem", zIndex: 3 }} />

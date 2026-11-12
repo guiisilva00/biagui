@@ -21,7 +21,7 @@ export default function Note({
   style,
 }) {
   return (
-    <Paper tone={tone} edge={edge} rotate={rotate} className={className} style={style}>
+    <Paper tone={tone} edge={edge} rotate={rotate} className={`${styles.pinned} ${className}`} style={style}>
       <div className={styles.note} data-align={align}>
         {hint && <span className={styles.hint}>{hint}</span>}
         {children ?? (
