@@ -4,7 +4,7 @@
   display: block;
   width: var(--w);
   aspect-ratio: 3 / 2;
-  margin-top: 8%;
+  margin-top: 0;
   padding: 0;
   border: 0;
   background: none;

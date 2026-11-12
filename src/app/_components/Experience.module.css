@@ -56,11 +56,18 @@
 
 /* título */
 .intro {
+  position: absolute;
+  top: clamp(1.25rem, 5svh, 3rem);
+  left: clamp(1.25rem, 5vw, 4rem);
   display: grid;
-  justify-items: center;
+  justify-items: start;
   gap: .2rem;
-  text-align: center;
-  z-index: 2;
+  width: min(30vw, 26rem);
+  text-align: left;
+  z-index: 4;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .8s ease .1s;
 }
 
 .title {
@@ -80,27 +87,50 @@
   width: clamp(9rem, 38vw, 15rem);
   overflow: visible;
 }
+
+@media (max-width: 599px) {
+  .intro {
+    top: 1rem;
+    left: 2rem;
+    width: min(56vw, 14rem);
+  }
+  .title {
+    max-width: 8ch;
+    font-size: clamp(2rem, 9vw, 2.8rem);
+  }
+  .scribble { width: min(9rem, 38vw); }
+}
 .scribble path {
   stroke: var(--amber-glow);
   stroke-width: 2.6;
   stroke-linecap: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  animation: draw 1.1s cubic-bezier(.6, 0, .2, 1) .5s forwards;
 }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 
-.cover[data-state="loading"] .intro { opacity: 0; }
-.intro { transition: opacity .8s ease .1s; }
+.cover[data-state="opening"] .intro,
+.cover[data-state="open"] .intro {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cover[data-state="opening"] .scribble path,
+.cover[data-state="open"] .scribble path {
+  animation: draw 1.1s cubic-bezier(.6, 0, .2, 1) .5s forwards;
+}
 
 /* palco do envelope */
 .stage {
   display: grid;
   place-items: center;
-  align-self: center;
   width: 100%;
-  padding-top: clamp(3rem, 15svh, 7rem);
   z-index: 2;
+}
+
+.cover > .stage {
+  position: absolute;
+  inset: 0;
 }
 
 .tilt {
@@ -143,6 +173,7 @@
   border: 0;
   background: none;
   cursor: pointer;
+  grid-row: 3;
   z-index: 2;
   opacity: 0;
   transform: translateY(10px);
@@ -186,7 +217,7 @@
   .intro { gap: 0; }
   .title { font-size: clamp(1.6rem, 5vw, 2.2rem); max-width: none; }
   .scribble { display: none; }
-  .stage { padding-top: 5.5rem; }
+  .stage { padding-top: 0; }
   .cue { position: absolute; right: 1.5rem; bottom: .75rem; min-height: 0; }
   .cueLine { display: none; }
 }
